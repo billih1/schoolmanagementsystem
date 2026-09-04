@@ -1,0 +1,335 @@
+<title>Run School Management System</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f8f9fa;
+    --text: #1a1a1a;
+    --muted: #666;
+    --accent: #1a5490;
+    --accent-bg: #e8f0ff;
+    --green: #2d7a3e;
+    --border: #ddd;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1a1a;
+      --surface: #2d2d2d;
+      --text: #ffffff;
+      --muted: #999;
+      --accent: #5ba3d0;
+      --accent-bg: #1a3a5a;
+      --green: #4a9d5f;
+      --border: #444;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 650px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .tagline { color: var(--muted); font-size: 0.95rem; }
+
+  .hero {
+    background: var(--accent-bg);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero h2 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p { color: var(--text); }
+
+  .method {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .method:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .method-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .method-num {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .method-title { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+  .method-desc { font-size: 0.9rem; color: var(--muted); margin-top: 0.25rem; }
+
+  .steps {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+
+  .steps ol { margin-left: 1.5rem; }
+  .steps li { margin-bottom: 0.4rem; }
+
+  code {
+    background: var(--surface);
+    color: var(--accent);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+  }
+
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.85rem;
+    color: var(--text);
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .success {
+    background: rgba(45, 122, 62, 0.08);
+    border-left: 4px solid var(--green);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+
+  .success strong { color: var(--green); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .info-card {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .info-card strong { color: var(--accent); display: block; margin-bottom: 0.25rem; }
+
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.4rem; }
+    .info-grid { grid-template-columns: 1fr; }
+    .method-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<div class="container">
+  <header>
+    <h1>🏫 School Management System</h1>
+    <p class="tagline">How to Run It on Your Computer</p>
+  </header>
+
+  <div class="hero">
+    <h2>✨ All Fixed & Ready!</h2>
+    <p>Pick your preferred method below to start the application.</p>
+  </div>
+
+  <!-- METHOD 1: DOUBLE-CLICK -->
+  <div class="method">
+    <div class="method-header">
+      <div class="method-num">1</div>
+      <div>
+        <div class="method-title">EASIEST: Double-Click run.bat</div>
+        <div class="method-desc">👉 Recommended for everyone</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <ol>
+        <li>Navigate to: <code>C:\Users\Ali\SchoolManagementSystem</code></li>
+        <li>Find the file: <code>run.bat</code></li>
+        <li>Double-click it</li>
+        <li>Wait for the application window to appear</li>
+      </ol>
+    </div>
+
+    <div class="success">
+      <strong>✓ That's it!</strong> The app opens. Database initializes on first run. Your data persists between sessions.
+    </div>
+  </div>
+
+  <!-- METHOD 2: POWERSHELL -->
+  <div class="method">
+    <div class="method-header">
+      <div class="method-num">2</div>
+      <div>
+        <div class="method-title">PowerShell Script</div>
+        <div class="method-desc">If you prefer using PowerShell</div>
+      </div>
+    </div>
+
+    <div class="code-block">cd C:\Users\Ali\SchoolManagementSystem
+.\run.ps1</div>
+
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--muted);">If you get a script execution error, run this first:</p>
+    <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
+  </div>
+
+  <!-- METHOD 3: MANUAL -->
+  <div class="method">
+    <div class="method-header">
+      <div class="method-num">3</div>
+      <div>
+        <div class="method-title">Manual PowerShell Commands</div>
+        <div class="method-desc">Full control version</div>
+      </div>
+    </div>
+
+    <div class="code-block">cd C:\Users\Ali\SchoolManagementSystem
+.\venv\Scripts\Activate.ps1
+python src/main.py</div>
+
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--muted);">This shows all messages and gives you full control.</p>
+  </div>
+
+  <!-- WHAT HAPPENS -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="color: var(--text); margin-bottom: 1rem;">🎯 What Happens When You Run It</h3>
+
+    <div style="margin-bottom: 1.5rem;">
+      <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">First Time:</p>
+      <ul style="margin-left: 1.5rem; color: var(--muted); font-size: 0.9rem;">
+        <li>Command window appears briefly</li>
+        <li>Virtual environment activates</li>
+        <li>Database initializes at <code>%LOCALAPPDATA%\SchoolManagementSystem\data\school.db</code></li>
+        <li>GUI window opens with the Student Registry</li>
+        <li>Ready to add students and use features!</li>
+      </ul>
+    </div>
+
+    <div>
+      <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">Next Times:</p>
+      <ul style="margin-left: 1.5rem; color: var(--muted); font-size: 0.9rem;">
+        <li>Just run the same command again</li>
+        <li>All your data is preserved</li>
+        <li>Instantly ready to use</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DATA LOCATIONS -->
+  <div style="margin: 2rem 0;">
+    <h3 style="color: var(--text); margin-bottom: 1rem;">💾 Where Your Data Is Stored</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <strong>Database</strong>
+        <p><code>%LOCALAPPDATA%\SchoolManagementSystem\data\school.db</code></p>
+      </div>
+      <div class="info-card">
+        <strong>Backups</strong>
+        <p><code>%LOCALAPPDATA%\SchoolManagementSystem\backups\</code></p>
+      </div>
+      <div class="info-card">
+        <strong>Reports</strong>
+        <p><code>%USERPROFILE%\Documents\School_Reports\</code></p>
+      </div>
+      <div class="info-card">
+        <strong>Logs</strong>
+        <p><code>%LOCALAPPDATA%\SchoolManagementSystem\logs\</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="color: var(--text); margin-bottom: 1rem;">✨ Available Features</h3>
+    <ul style="margin-left: 1.5rem; color: var(--muted); font-size: 0.9rem;">
+      <li><strong>Student Registry</strong> – Add, edit, search students</li>
+      <li><strong>PDF Reports</strong> – Export student data</li>
+      <li><strong>Database</strong> – Automatic backup and restore</li>
+      <li><strong>Dashboard</strong> – View statistics and overview</li>
+      <li><strong>Role-Based Access</strong> – Admin, Accountant, Teacher, Clerk (coming soon)</li>
+    </ul>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="color: var(--text); margin-bottom: 1rem;">🔧 Troubleshooting</h3>
+
+    <p style="font-weight: 600; color: var(--text); margin: 1rem 0 0.5rem 0;">❌ "File not found" or "Command not recognized"</p>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem;">Make sure you're in the correct directory: <code>C:\Users\Ali\SchoolManagementSystem</code></p>
+
+    <p style="font-weight: 600; color: var(--text); margin: 1rem 0 0.5rem 0;">❌ Application window doesn't appear</p>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem;">Check the command window for error messages. Common cause: PyQt6 module not found. If this happens, run: <code>pip install -r requirements.txt</code></p>
+
+    <p style="font-weight: 600; color: var(--text); margin: 1rem 0 0.5rem 0;">❌ Port already in use or database locked</p>
+    <p style="color: var(--muted); font-size: 0.9rem;">Close other instances of the application and try again.</p>
+  </div>
+
+  <footer>
+    <p><strong>School Management System v1.0.0</strong></p>
+    <p>✅ All issues fixed • Ready to use • Fully offline</p>
+    <p style="margin-top: 0.5rem;">📍 On GitHub: <code>github.com/billih1/schoolmanagementsystem</code></p>
+  </footer>
+</div>
