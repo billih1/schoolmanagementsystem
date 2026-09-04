@@ -12,6 +12,9 @@ sys.path.insert(0, str(Path(__file__).parent / 'src'))
 from config import Config, ensure_directories
 from database import DatabaseManager
 
+# Ensure directories exist FIRST
+ensure_directories()
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -40,7 +43,7 @@ def main():
 
         # Import and start PyQt6 application
         from PyQt6.QtWidgets import QApplication
-        from ui.main_window import MainWindow
+        from src.ui.main_window import MainWindow
 
         app = QApplication(sys.argv)
         window = MainWindow()
