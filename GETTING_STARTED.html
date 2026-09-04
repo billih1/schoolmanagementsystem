@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System - Getting Started</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f0f2f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --border-color: #d0d0d0;
+            --accent: #1a5490;
+            --accent-light: #e8f0ff;
+            --success: #2d7a3e;
+            --warning: #8b6914;
+            --error: #c41e3a;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-primary: #1a1a1a;
+                --bg-secondary: #2d2d2d;
+                --bg-tertiary: #3a3a3a;
+                --text-primary: #ffffff;
+                --text-secondary: #e0e0e0;
+                --text-tertiary: #b0b0b0;
+                --border-color: #4a4a4a;
+                --accent: #5ba3d0;
+                --accent-light: #1a3a5a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .section {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section.highlight {
+            background: var(--accent-light);
+            border-color: var(--accent);
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .step-card {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .step-card h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .feature-item strong {
+            color: var(--accent);
+        }
+
+        .warning-box {
+            background: var(--warning);
+            opacity: 0.1;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .warning-box strong {
+            color: var(--warning);
+        }
+
+        .success-box {
+            background: var(--success);
+            opacity: 0.1;
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .success-box strong {
+            color: var(--success);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        th {
+            background: var(--accent);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .path-box {
+            background: var(--bg-tertiary);
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            border-left: 3px solid var(--accent);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        .toc {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏫 School Management System</h1>
+            <p class="subtitle">Complete Desktop Application for School Administration</p>
+            <span class="version-badge">v1.0.0</span>
+        </header>
+
+        <div class="toc section">
+            <h3>Quick Navigation</h3>
+            <ul>
+                <li><a href="#installation">Installation & Setup</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#features">Features Overview</a></li>
+                <li><a href="#database">Database & Data</a></li>
+                <li><a href="#development">Development</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </div>
+
+        <section id="installation">
+            <h2>Installation & Setup</h2>
+
+            <h3>System Requirements</h3>
+            <ul>
+                <li><strong>OS:</strong> Windows 10 or Windows 11 (64-bit)</li>
+                <li><strong>RAM:</strong> Minimum 4GB (8GB recommended)</li>
+                <li><strong>Storage:</strong> 500MB for application + database</li>
+                <li><strong>Internet:</strong> Not required (fully offline)</li>
+            </ul>
+
+            <h3>Installation Steps</h3>
+            <div class="step-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Download Installer</h3>
+                    <p>Download <code>SchoolManagementSystem_Setup.exe</code> from the dist folder</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Run Setup</h3>
+                    <p>Double-click the installer and follow the setup wizard</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Choose Location</h3>
+                    <p>Accept default or select custom installation path in Program Files</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Create Shortcuts</h3>
+                    <p>Select to create Desktop and Start Menu shortcuts (recommended)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Launch App</h3>
+                    <p>Click "Launch" to start the application after installation</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>First Run</h3>
+                    <p>Application initializes database and creates required directories</p>
+                </div>
+            </div>
+
+            <h3>Portable Installation (No Installer)</h3>
+            <p>Alternatively, extract <code>SchoolManagementSystem_Portable.zip</code> to any folder and run <code>SchoolManagementSystem.exe</code> directly.</p>
+
+            <div class="success-box">
+                <strong>✓ Installation Complete</strong> – The application is ready to use. User data is stored in <code>%LOCALAPPDATA%\SchoolManagementSystem\</code>
+            </div>
+        </section>
+
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+
+            <h3>First-Time Setup</h3>
+            <ol>
+                <li><strong>Launch Application</strong> – Click the desktop shortcut or Start Menu entry</li>
+                <li><strong>Initialize Database</strong> – The app automatically creates the database on first run</li>
+                <li><strong>View Dashboard</strong> – You'll see the main dashboard with statistics</li>
+            </ol>
+
+            <h3>Core Workflows</h3>
+
+            <h4>📋 Student Registry</h4>
+            <ol>
+                <li>Navigate to the <strong>Student Registry</strong> tab</li>
+                <li>Click <strong>"+ Add Student"</strong> to add new students</li>
+                <li>Fill in student details:
+                    <ul>
+                        <li>Admission Number (required, unique)</li>
+                        <li>Full Name, Date of Birth</li>
+                        <li>Class and Section assignment</li>
+                        <li>Contact information</li>
+                    </ul>
+                </li>
+                <li>Save the student record</li>
+                <li>Use search and filters to find students quickly</li>
+                <li>Export student list as CSV or PDF</li>
+            </ol>
+
+            <h4>👥 Staff Directory</h4>
+            <p>Manage employee records, designations, contact information, and workload allocation. Staff modules are coming in Phase 2.</p>
+
+            <h4>📅 Timetable Management</h4>
+            <p>Create and manage class schedules with automatic conflict detection. The system prevents:</p>
+            <ul>
+                <li>Teacher double-booking in overlapping periods</li>
+                <li>Classroom conflicts</li>
+                <li>Student section conflicts</li>
+            </ul>
+
+            <h4>📝 Examination Module</h4>
+            <p>Features include:</p>
+            <ul>
+                <li>Question bank management by subject and difficulty</li>
+                <li>Automated exam paper generation with variants</li>
+                <li>Marks entry with one-click ranking</li>
+                <li>Automatic report card and tabulation sheet generation</li>
+            </ul>
+
+            <h4>💰 Fee Management</h4>
+            <p>One-click billing system with:</p>
+            <ul>
+                <li>Automatic arrears rollover</li>
+                <li>Discount and concession application</li>
+                <li>Sequential invoice numbering</li>
+                <li>3-part bank challan generation for printing</li>
+            </ul>
+
+            <h4>✓ Attendance Tracking</h4>
+            <p>Fast attendance marking with automatic calculations for absenteeism monitoring.</p>
+        </section>
+
+        <section id="features">
+            <h2>Features Overview</h2>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>📚 Student Information System</strong>
+                    <p>Complete student lifecycle management with guardian linkage and enrollment status tracking</p>
+                </div>
+                <div class="feature-item">
+                    <strong>👨‍🏫 Staff Directory</strong>
+                    <p>Employee profiles, designations, workload tracking, and employment status</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🔄 Automated Timetabling</strong>
+                    <p>Smart scheduling with conflict resolution and printable export</p>
+                </div>
+                <div class="feature-item">
+                    <strong>❓ Question Bank</strong>
+                    <p>Classified question database with automated exam paper generation</p>
+                </div>
+                <div class="feature-item">
+                    <strong>📊 Examination System</strong>
+                    <p>Marks entry, ranking calculation, report cards, and tabulation sheets</p>
+                </div>
+                <div class="feature-item">
+                    <strong>💳 Fee Management</strong>
+                    <p>Bulk invoicing with arrears tracking and 3-part bank challan generation</p>
+                </div>
+                <div class="feature-item">
+                    <strong>📋 Attendance System</strong>
+                    <p>Daily marking with chronic absenteeism alerts and attendance reports</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🔐 Role-Based Access</strong>
+                    <p>Admin, Accountant, Teacher, and Clerk roles with specific permissions</p>
+                </div>
+                <div class="feature-item">
+                    <strong>💾 Backup & Restore</strong>
+                    <p>One-click database backup and restoration for data safety</p>
+                </div>
+                <div class="feature-item">
+                    <strong>📄 PDF Exports</strong>
+                    <p>Professional report generation for timetables, cards, and invoices</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="database">
+            <h2>Database & Data Storage</h2>
+
+            <h3>Data Location</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>School Database</td>
+                    <td><code>%LOCALAPPDATA%\SchoolManagementSystem\data\school.db</code></td>
+                    <td>SQLite database with all school records</td>
+                </tr>
+                <tr>
+                    <td>Backups</td>
+                    <td><code>%LOCALAPPDATA%\SchoolManagementSystem\backups\</code></td>
+                    <td>Compressed backup files</td>
+                </tr>
+                <tr>
+                    <td>Reports</td>
+                    <td><code>%USERPROFILE%\Documents\School_Reports\</code></td>
+                    <td>Exported PDFs and CSV files</td>
+                </tr>
+                <tr>
+                    <td>Logs</td>
+                    <td><code>%LOCALAPPDATA%\SchoolManagementSystem\logs\</code></td>
+                    <td>Application logs for troubleshooting</td>
+                </tr>
+            </table>
+
+            <h3>Database Schema</h3>
+            <p>The application uses SQLite with the following main tables:</p>
+            <ul>
+                <li><code>students</code> – Student records with enrollment status</li>
+                <li><code>guardians</code> – Parent and guardian information</li>
+                <li><code>staff</code> – Teacher and staff profiles</li>
+                <li><code>classes</code> – Grade levels and sections</li>
+                <li><code>attendance</code> – Daily attendance logs</li>
+                <li><code>fee_structure</code> – Fee configuration per class</li>
+                <li><code>invoices</code> – Fee billing records</li>
+                <li><code>timetable</code> – Class schedules</li>
+                <li><code>questions</code> – Question bank</li>
+                <li><code>exam_papers</code> – Generated exam papers</li>
+                <li><code>exam_results</code> – Student marks and grades</li>
+                <li><code>audit_log</code> – Record of critical operations</li>
+            </ul>
+
+            <h3>Data Backup</h3>
+            <ol>
+                <li>Open <strong>File → Backup Database</strong></li>
+                <li>Choose backup location (defaults to Backups folder)</li>
+                <li>Backup file is compressed and timestamped</li>
+                <li>To restore: <strong>File → Restore Database</strong> and select backup file</li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>⚠ Important:</strong> Regular backups are recommended. Always maintain an external backup on a USB drive or separate storage device.
+            </div>
+        </section>
+
+        <section id="development">
+            <h2>Development & Building from Source</h2>
+
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Python 3.10 or higher</li>
+                <li>pip (Python package manager)</li>
+                <li>Inno Setup 6 (for installer creation)</li>
+                <li>Git (for version control)</li>
+            </ul>
+
+            <h3>Setup Development Environment</h3>
+            <pre><code># Clone or extract the project
+cd SchoolManagementSystem
+
+# Create virtual environment
+python -m venv venv
+venv\Scripts\activate  # On Windows
+
+# Install dependencies
+pip install -r requirements.txt</code></pre>
+
+            <h3>Running in Development Mode</h3>
+            <pre><code># Run the application directly
+python src/main.py
+
+# Or with debugging
+python -m pdb src/main.py</code></pre>
+
+            <h3>Building the Executable</h3>
+            <pre><code># Build .exe and installer
+python build_installer.py
+
+# Output:
+# - dist/SchoolManagementSystem/SchoolManagementSystem.exe (standalone app)
+# - dist/SchoolManagementSystem_Setup.exe (installer)</code></pre>
+
+            <h3>Project Structure</h3>
+            <pre><code>SchoolManagementSystem/
+├── src/
+│   ├── main.py              # Entry point
+│   ├── config.py            # Configuration
+│   ├── database.py          # Database engine
+│   ├── repositories.py      # Data access layer
+│   ├── models/              # Data models
+│   ├── ui/                  # PyQt6 interfaces
+│   └── services/            # Business logic
+├── installer/               # Inno Setup scripts
+├── dist/                    # Built executables
+├── requirements.txt         # Python dependencies
+└── build_installer.py       # Build automation</code></pre>
+
+            <h3>Key Technologies</h3>
+            <ul>
+                <li><strong>PyQt6</strong> – Desktop UI framework</li>
+                <li><strong>SQLite3</strong> – Local database with WAL mode</li>
+                <li><strong>ReportLab</strong> – PDF generation</li>
+                <li><strong>PyInstaller</strong> – Python to executable</li>
+                <li><strong>Inno Setup</strong> – Windows installer</li>
+            </ul>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+
+            <h3>Application won't start</h3>
+            <ul>
+                <li><strong>Check Windows version:</strong> Windows 10 or 11 (64-bit) required</li>
+                <li><strong>Verify permissions:</strong> Ensure you have write access to Program Files and %LOCALAPPDATA%</li>
+                <li><strong>Check logs:</strong> Review <code>%LOCALAPPDATA%\SchoolManagementSystem\logs\app.log</code></li>
+            </ul>
+
+            <h3>Database errors</h3>
+            <ul>
+                <li><strong>Database locked:</strong> Close other instances and restart the application</li>
+                <li><strong>Permission denied:</strong> Ensure %LOCALAPPDATA% is accessible and writable</li>
+                <li><strong>Corrupted database:</strong> Restore from backup and verify file integrity</li>
+            </ul>
+
+            <h3>UI issues</h3>
+            <ul>
+                <li><strong>Blurry text:</strong> Enable High DPI scaling in Windows display settings</li>
+                <li><strong>Missing features:</strong> Verify user role has appropriate permissions</li>
+                <li><strong>Slow performance:</strong> Check available disk space and close other applications</li>
+            </ul>
+
+            <h3>Data issues</h3>
+            <ul>
+                <li><strong>Missing students:</strong> Check filters and search box – they may be hidden</li>
+                <li><strong>Duplicate records:</strong> Use unique admission numbers and verify during entry</li>
+                <li><strong>Lost data:</strong> Restore from backup using File → Restore Database</li>
+            </ul>
+
+            <h3>Getting Help</h3>
+            <ol>
+                <li>Check the logs in <code>%LOCALAPPDATA%\SchoolManagementSystem\logs\</code></li>
+                <li>Review this Getting Started guide</li>
+                <li>Contact your school administrator</li>
+            </ol>
+
+            <div class="success-box">
+                <strong>✓ Need More Help?</strong> – Check the application's Help menu for additional documentation and support resources.
+            </div>
+        </section>
+
+        <section>
+            <h2>System Capabilities Summary</h2>
+            <div class="section highlight">
+                <h3>What This System Does</h3>
+                <ul>
+                    <li>✓ Complete offline operation – zero internet required</li>
+                    <li>✓ Automatic conflict detection in timetables</li>
+                    <li>✓ One-click exam paper generation with variants</li>
+                    <li>✓ Automatic GPA and ranking calculation</li>
+                    <li>✓ Bulk fee invoice generation with arrears tracking</li>
+                    <li>✓ Professional PDF export for all reports</li>
+                    <li>✓ Role-based security with audit trails</li>
+                    <li>✓ Atomic database transactions for data integrity</li>
+                    <li>✓ One-click backup and restore capability</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>School Management System v1.0.0</strong></p>
+            <p>A comprehensive school administration platform for Windows desktops</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Last updated: September 4, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
