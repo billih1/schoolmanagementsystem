@@ -5,7 +5,7 @@ Student Registry UI Module for School Management System
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QLineEdit,
     QTableWidget, QTableWidgetItem, QDialog, QFormLayout, QComboBox,
-    QDateEdit, QSpinBox, QMessageBox, QHeaderView, QSearchBar
+    QDateEdit, QSpinBox, QMessageBox, QHeaderView
 )
 from PyQt6.QtCore import Qt, QDate
 from PyQt6.QtGui import QFont, QIcon
