@@ -43,7 +43,7 @@ def main():
 
         # Import and start PyQt6 application
         from PyQt6.QtWidgets import QApplication
-        from src.ui.main_window import MainWindow
+        from ui.main_window import MainWindow
 
         app = QApplication(sys.argv)
         window = MainWindow()
